@@ -4,7 +4,7 @@ https://codepen.io/zzgael/pen/NWwJPVe
 
 Présentation : https://docs.google.com/presentation/d/1MWUeDrDTJGJk1pDmt-n-lNhZ_Y9SFAT6haq3489ZPVs/edit?usp=sharing
 
-![Liste de films](https://github.com/code-gt/template-mini-films/blob/main/screenshot.png?raw=true)
+![Liste de films](https://github.com/code-gt/mini-projet-films/blob/main/preview.png?raw=true)
 
 ## Exercice 1 
 
