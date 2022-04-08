@@ -28,3 +28,7 @@ En plus du titre, ajoutez également l'année de chaque film ( exemple : "Star W
 ## Exercice 4
 
 Ajoutez l'image du film pour que ce soit joli. Utilisez CSS pour obtenir un résultat proche du projet souhaité ! 
+
+## Exercice 5 
+
+Intégrer le template de https://github.com/code-gt/template-mini-films-vide
