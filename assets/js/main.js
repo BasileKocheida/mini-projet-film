@@ -1,42 +1,52 @@
-
 let form = document.querySelector('form');
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
-    let newTitle = document.querySelector('#search').value;
-    console.log("new search", newTitle)
-
+    newTitle = document.querySelector('#search').value;
+    loadMovies(newTitle)
 })
 
-async function getMovies() {
-    let title = "harry potter"
-    console.log("fonction getMovie", title);
-    let url = "https://www.omdbapi.com/?s="+title+"&plot=short&apikey=2a4831ba"
-    const response = await fetch(url)
-    const data = await response.json()
-    return data.Search
+async function getMovies(newTitle) {
+    
+    const title = "harry potter";
+    if(newTitle.length >0){
+        console.log("if", newTitle);
+        let url = "https://www.omdbapi.com/?s="+newTitle+"&plot=short&apikey=2a4831ba"
+        const response = await fetch(url)
+        const data = await response.json()
+        return data.Search
+    }else{
+        let url = "https://www.omdbapi.com/?s="+title+"&plot=short&apikey=2a4831ba"
+        const response = await fetch(url)
+        const data = await response.json()
+        return data.Search
+    }
 }
 
-const data = getMovies().then(function (movies) {
-console.log(movies);
-    movies.forEach(movie => {
-
-        let divMovieContent = document.querySelector(".list-movies")
-        let divCardContent = document.createElement("div")
-        divCardContent.className = "card-content col-3"
-        const img = document.createElement("img")
-        const divMovieTitle = document.createElement("div")
-        divMovieTitle.className = "title"
-
-        img.setAttribute("src", movie.Poster)
-        divMovieTitle.textContent = movie.Title
-
-        divMovieContent.appendChild(divCardContent)
-        divCardContent.appendChild(img)
-        divCardContent.appendChild(divMovieTitle)
-    });
+window.addEventListener("DOMContentLoaded", function(e) {
+    loadMovies()
 })
 
+  function loadMovies(newTitle = ""){
+    let result = getMovies(newTitle).then(function (movies) {
+        console.log(movies);
+        let divMovieContent = document.querySelector(".list-movies")
+        divMovieContent.innerHTML =  ''
 
-
-  
+            movies.forEach(movie => {
+        
+                let divCardContent = document.createElement("div")
+                divCardContent.className = "card-content col-3"
+                const img = document.createElement("img")
+                const divMovieTitle = document.createElement("div")
+                divMovieTitle.className = "title"
+        
+                img.setAttribute("src", movie.Poster)
+                divMovieTitle.textContent = movie.Title  
+        
+                divMovieContent.appendChild(divCardContent)
+                divCardContent.appendChild(img)
+                divCardContent.appendChild(divMovieTitle)
+            });
+        });
+  }
